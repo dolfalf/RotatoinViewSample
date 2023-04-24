@@ -136,7 +136,7 @@ extension ViewController: UIScrollViewDelegate {
         collectionView.reloadData()
         
         // Offset位置を固定する。無限ローリングのためこれは変わらない。データソースが変更されるから
-        collectionView.scrollToItem(at: IndexPath(row: 2, section: 0),
+        collectionView.scrollToItem(at: IndexPath(row: currentPageIndex, section: 0),
                                     at: .centeredHorizontally, animated: false)
     }
 }
