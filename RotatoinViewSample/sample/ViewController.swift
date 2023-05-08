@@ -39,8 +39,11 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         collectionView.clipsToBounds = false
         
         // 初期表示Position指定
-        collectionView.scrollToItem(at: IndexPath(row: Int(ceil(Double(rollingBanner(centerIndex: centerIndex).count)) / 2.0), section: 0),
-                                    at: .centeredHorizontally, animated: false)
+        // 修正：アプリ起動時、指定されてるIndexではなく、最初のIndexから始まる現象修正。（23.5.8)
+        DispatchQueue.main.async {
+            self.collectionView.scrollToItem(at: IndexPath(row: Int(ceil(Double(self.rollingBanner(centerIndex: self.centerIndex).count)) / 2.0), section: 0),
+                                        at: .centeredHorizontally, animated: false)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
